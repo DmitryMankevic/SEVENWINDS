@@ -1,9 +1,9 @@
-import { useState } from "react";
-import Router from "./app/Router/Router";
+import { useState, type JSX } from "react";
+import Router from "./Router/Router";
 import { useEffect } from "react";
-import axiosInstance, { setAccessToken } from "./shared/lib/axiosInstance";
+import axiosInstance, { setAccessToken } from "../shared/lib/axiosInstance";
 
-function App() {
+function App(): JSX.Element {
   const [user, setUser] = useState({ status: "logging", data: null });
   useEffect(() => {
     axiosInstance("/auth/refreshTokens")
