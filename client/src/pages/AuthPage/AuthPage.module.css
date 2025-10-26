@@ -39,7 +39,7 @@
 
 
 body {
-  background-image: url("../public/background.jpg"); /* путь к твоей картинке */
+  background-image: url("../background.jpg"); /* путь к твоей картинке */
   background-size: cover; /* растянуть по экрану */
   background-position: center;
   background-repeat: no-repeat;
