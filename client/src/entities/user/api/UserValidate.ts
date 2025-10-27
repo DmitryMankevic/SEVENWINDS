@@ -1,10 +1,13 @@
-export default class UserValidate {
-  static validateEmail(email) {
+import type { IUserLoginData, IUserSignUpData } from "../model";
+
+
+export class UserValidate {
+  static validateEmail(email: string) {
     const emailPattern = /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/;
     return emailPattern.test(email);
   }
 
-  static validatePassword(password) {
+  static validatePassword(password: string) {
     const hasUpperCase = /[A-Z]/;
     const hasLowerCase = /[a-z]/;
     const hasNumbers = /\d/;
@@ -24,7 +27,12 @@ export default class UserValidate {
     return true;
   }
 
-  static validateLoginData({ email, password }) {
+  static validateLoginData(user: IUserLoginData): {
+    isValid: boolean;
+    err: string | null;
+  } {
+    const { email, password } = user;
+
     if (
       !email ||
       typeof email !== "string" ||
@@ -55,7 +63,12 @@ export default class UserValidate {
     };
   }
 
-  static validateSignUpData({ email, password, faculty }) {
+  static validateSignUpData(user: IUserSignUpData): {
+    isValid: boolean;
+    err: string | null;
+  } {
+    const { email, password, faculty } = user;
+
     if (!faculty || !faculty.trim()) {
       return { isValid: false, err: "Поле faculty не должно быть пустым" };
     }
