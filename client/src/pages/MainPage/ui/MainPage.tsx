@@ -1,6 +1,7 @@
+import type { JSX } from "react";
 import cls from "./MainPage.module.css";
 
-export default function MainPage() {
+export function MainPage(): JSX.Element {
   return (
     <>
       <div className={cls.container}>
